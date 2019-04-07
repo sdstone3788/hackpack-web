@@ -223,7 +223,6 @@ var config = {
   }
 
   function signAcc(){
-    alert("HELLO");
     var email = document.getElementById("signUserName").value;
     var password = document.getElementById("signPassword").value;
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -236,7 +235,6 @@ var config = {
     document.getElementById("signPassword").value = "";
     signIn();
   }).then(function(){
-    alert("HELLOOOO????");
     document.getElementById("signInNow").close();
     window.location.href="mainPage.html";
   });
