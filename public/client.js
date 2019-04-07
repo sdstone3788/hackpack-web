@@ -11,6 +11,6 @@ function getIdeas(){
 
 function renderData(data){
   for (var i = 0; i < data.length; i++) {
-    $('ul').append('<li>' + data[i].idea + '</li>');
+    $('ul').append('<li>' + data[i].content + ' ' + data[i].number + '</li>');
   }
 }  

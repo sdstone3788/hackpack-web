@@ -7,14 +7,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/ideas', function(req, res) {
-  knex('ideas').select()
+  knex('dumb').select()
   .then(function(data){
     res.send(data);
   });
 });
 
 app.post('/ideas', function(req, res) {
-  knex('ideas').insert(req.body)
+   var inserting = req.body.content;
+   console.log(inserting);
+  knex('dumb').insert({content:inserting, number:100})
   .then(function(id){
     res.redirect('/');
   });

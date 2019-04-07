@@ -1,0 +1,18 @@
+body{
+  text-align:center;
+}
+button{
+  background-color: grey;
+  font-family: Arial, sans-serif;
+  border:none;
+  padding:10px;
+  color:#fff;
+}
+#submit, #cancel{
+  background-color:teal;
+}
+
+#yourPost {
+  width: 50%;
+  height: 300px;
+}

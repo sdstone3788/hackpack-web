@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Post</title>
+    <link rel="stylesheet" href="newPostStyles.css">
+  </head>
+  <body>
+    <h1>New Post</h1>
+      <div id="newPost">
+        <br><br>
+        What's on your mind?
+        <br><br>
+        <textArea id="yourPost"></textArea>
+        <br><br>
+        <button id="LGBT" onclick="highLight(this)">LGBT+</button>
+        <button id="Woman" onclick="highLight(this)">Woman</button>
+        <button id="NonBinary" onclick="highLight(this)">Non-Binary</button>
+        <button id="Man" onclick="highLight(this)">Man</button>
+        <button id="POC" onclick="highLight(this)">Person of Color</button>
+        <button id="Asian" onclick="highLight(this)">Asian</button>
+        <button id="Black" onclick="highLight(this)">Black</button>
+        <button id="Hispanic" onclick="highLight(this)">Hispanic</button>
+        <button id="LowIncome" onclick="highLight(this)">Low Income</button>
+        <button id="MiddleIncome" onclick="highLight(this)">Middle Income</button>
+        <br><br>
+        <button id="submit" onclick="postContent()">Post</button>
+        <button id="cancel" onclick="backToFeed()">Cancel</button>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" ></script>
+     <script type="text/javascript" src="newPostJS.js"></script>
+    </body>
+</html>
