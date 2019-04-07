@@ -96,10 +96,15 @@ var config = {
         query.once("value").then(function(snapshot){
           //for every post
              snapshot.forEach(function(childSnapshot){
+                var mainDiv = document.createElement("div");
+                mainDiv.className = "weirdDiv";
+                var contentDiv = document.createElement("div");
                 var addDiv = document.createElement("div");
                 var content = childSnapshot.child("Content").val();
                 var contentP = document.createTextNode(content);
-                addDiv.appendChild(contentP);
+                contentDiv.appendChild(contentP);
+                var breakLine = document.createElement("br");
+                mainDiv.appendChild(contentDiv);
                   // add the tags for this post
                   if(childSnapshot.child("LGBT").val()){
                     var button = document.createElement('button');
@@ -199,7 +204,8 @@ var config = {
                      };
                      addDiv.appendChild(button);
                    }
-                  bodyDiv.appendChild(addDiv);
+                   mainDiv.appendChild(addDiv);
+                  bodyDiv.appendChild(mainDiv);
                 });
               });
   }

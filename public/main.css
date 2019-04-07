@@ -1,7 +1,6 @@
 body {
   padding: 30px;
   background-color: #41B3A3;
-
   font-family: Verdana, sans-serif;
   color: #fff;
 }
@@ -30,6 +29,7 @@ button {
   background-color: #0f5f74;
   border: none;
   color: #fff;
+  margin: 5px;
 }
 
 button:hover {
@@ -39,18 +39,23 @@ button:hover {
 #bodyDiv {
   display: flex;
   flex-direction: column;
-  background-color: #E8A87C;
-  width: 800px;
-  align-content: center;
+  background-color: #e8a87c;
+  width: 75%;
+  justify-content: center;
+  border: 3px solid white;
 }
 
+.weirdDiv{
+  flex-direction:column;
+  justify-content: center;
+  border: 3px solid white;
+
+}
 div {
   display: flex;
-  background-color: #C38D9D;
+  background-color: #5DBCD2;
   margin: 20px;
   border-radius: 15px;
   padding: 10px;
-  text-align: center;
-  width: 700px;
-  align-content: center;
+  justify-content: center;
 }
