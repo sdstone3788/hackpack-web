@@ -14,10 +14,10 @@ OR
 
 ## Why is it called DiversiTea?
 'Tea' is a common word thrown around amongst the youth nowadays, and it typically means 'truth' or
-'gossip'. We want to "spill the tea" about what people face in their real, diverse lives. 
+'gossip'. We want to "spill the tea" about what people face in their real, diverse lives.
 
 ## How to Run It
-1. Click the link [here](firebaselinkhere)
+1. Click the link [here](https://athenahacks2019-6a7e9.firebaseapp.com)
 2. Create an account if you haven't already, or sign in to an existing account.
 3. Scroll through your timeline to view all stories submitted (of all tags).
 4. Click tags to see stories within that specific category.
