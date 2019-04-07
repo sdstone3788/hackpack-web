@@ -164,6 +164,9 @@ var config = {
                bodyDiv.appendChild(mainDiv);
           }
           });
+        }).then(function(){
+          document.getElementById("searchDialog").close();
+          document.getElementById("LGBT").style.backgroundColor = "#0f5f74";
         });
   }
 
