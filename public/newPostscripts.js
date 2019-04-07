@@ -168,6 +168,17 @@ var config = {
         }).then(function(){
           document.getElementById("searchDialog").close();
           document.getElementById("LGBT").style.backgroundColor = "#0f5f74";
+          document.getElementById("White").style.backgroundColor = "#0f5f74";
+          document.getElementById("Black").style.backgroundColor = "#0f5f74";
+          document.getElementById("Hispanic").style.backgroundColor = "#0f5f74";
+          document.getElementById("NonBinary").style.backgroundColor = "#0f5f74";
+          document.getElementById("LowIncome").style.backgroundColor = "#0f5f74";
+          document.getElementById("MiddleIncome").style.backgroundColor = "#0f5f74";
+          document.getElementById("POC").style.backgroundColor = "#0f5f74";
+          document.getElementById("Man").style.backgroundColor = "#0f5f74";
+          document.getElementById("Woman").style.backgroundColor = "#0f5f74";
+          document.getElementById("Asian").style.backgroundColor = "#0f5f74";
+          searchTags = [];
         });
   }
 
