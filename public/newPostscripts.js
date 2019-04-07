@@ -298,3 +298,11 @@ var config = {
 
 
     }
+
+function searchBar(){
+  document.getElementById("searchDialog").showModal();
+}
+
+function cancelSearch(){
+  document.getElementById("searchDialog").close();
+}
