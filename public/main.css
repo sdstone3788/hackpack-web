@@ -1,6 +1,7 @@
 body {
   padding: 30px;
   background-color: #41B3A3;
+
   font-family: Verdana, sans-serif;
   color: #fff;
 }
@@ -33,4 +34,23 @@ button {
 
 button:hover {
   box-shadow: 3px 2px 3px #6a7988;
+}
+
+#bodyDiv {
+  display: flex;
+  flex-direction: column;
+  background-color: #E8A87C;
+  width: 800px;
+  align-content: center;
+}
+
+div {
+  display: flex;
+  background-color: #C38D9D;
+  margin: 20px;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
+  width: 700px;
+  align-content: center;
 }

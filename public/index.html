@@ -6,20 +6,16 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
-  <body>
-
+  <body onload="displayPosts()">
     <h1>Diversi-Tea</h1>
-
-
-    <p> I'm a cool person </p>
-
-
+    <div id='bodyDiv'>
+    </div>
     <button onclick="window.location.href='newPost.html'">Go post</button>
     <button onclick="logout()">Log out</button>
 
     <ul></ul>
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" ></script>
-   <script type="text/javascript" src="newPostscripts.js"></script>
+    <script type="text/javascript" src="newPostscripts.js"></script>
     </body>
 </html>
