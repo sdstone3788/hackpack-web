@@ -11,6 +11,10 @@ function getIdeas(){
 
 function renderData(data){
   for (var i = 0; i < data.length; i++) {
-    $('ul').append('<li>' + data[i].content + ' ' + data[i].number + '</li>');
+
+    // display the post nicely in a text box
+    // display the tags that were tagged in this post (by checking columns for
+    // true values) 
+    $('ul').append('<p>' + data[i].content + '</p>');
   }
 }  
