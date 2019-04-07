@@ -8,12 +8,11 @@
   </head>
   <body onload="displayPosts()">
     <h1>Diversi-Tea</h1>
+    <button onclick="window.location.href='index.html'">Home</button>
     <button onclick="window.location.href='newPost.html'">Write Post</button>
     <button onclick="logout()">Log out</button>
+    <br></br>
     <button id=searchBar onclick="searchBar()"><img id= mag src="mag.jpg"> </img></button>
-
-    <div id='bodyDiv'>
-
     <dialog id="searchDialog">
        Search for stories
       <br><br>
@@ -36,6 +35,9 @@
       <button onclick="filterForTags([])">Search</button>
       <button onclick="cancelSearch()">Cancel</button>
     </dialog>
+    <div id='bodyDiv'>
+
+
 
     <ul></ul>
 </div>

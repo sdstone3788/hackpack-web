@@ -27,15 +27,16 @@ var config = {
 
   function filterForTags(tags){
     isSearch = true;
-    window.location.href = "index.html";
+    //window.location.href = "index.html";
       if(tags.length == 0){
         tags = searchTags;
       }
       console.log("tags: " + tags);
       console.log("search tags: " + searchTags);
       var bodyDiv = document.getElementById('bodyDiv');
-      //var results = document.createTextNode("Search Results");
-      //bodyDiv.appendChild(results);
+      bodyDiv.innerHTML = "";
+      var results = document.createTextNode("Search Results");
+      bodyDiv.appendChild(results);
 
         //var posts = ref.child("posts").orderByKey();
       var query = ref.child("posts").orderByKey();
@@ -236,9 +237,12 @@ var config = {
   }
     function displayPosts(){
       if(isSearch){
+        console.log("isSearch is true");
         isSearch = !isSearch;
+        console.log("now issearch is: " + isSearch);
         return;
       }
+      console.log("just ran displayposts");
       var bodyDiv = document.getElementById('bodyDiv');
 
       //var posts = ref.child("posts").orderByKey();
