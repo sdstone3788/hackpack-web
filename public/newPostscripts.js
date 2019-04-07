@@ -10,6 +10,7 @@ var config = {
   firebase.initializeApp(config);
   var ref = firebase.database().ref();
   var selected = [];
+  var searchTags = [];
 
   function highLight(data){
     data.style.backgroundColor = "#EC868B";
@@ -17,9 +18,32 @@ var config = {
     selected.push(data.id);
   }
 
-      function filterForTags(tags){
-        console.log("filtering now");
+  function highLightSearch(data){
+    data.style.backgroundColor = "#EC868B";
+    console.log(data.id);
+    searchTags.push(data.id);
+  }
+
+  function filterForTags(tags){
+    //window.location.href = "index.html";
+      if(tags.length == 0){
+        tags = searchTags;
       }
+      console.log("tags: " + tags);
+      console.log("search tags: " + searchTags);
+      var bodyDiv = document.getElementById('bodyDiv');
+      //var results = document.createTextNode("Search Results");
+      //bodyDiv.appendChild(results);
+
+        //var posts = ref.child("posts").orderByKey();
+      var query = ref.child("posts").orderByKey();
+      query.once("value").then(function(snapshot){
+        //for every post
+        snapshot.forEach(function(childSnapshot){
+
+          });
+        });
+  }
 
 
   function backToFeed(){
