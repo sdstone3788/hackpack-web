@@ -54,3 +54,18 @@ div {
   width: 700px;
   align-content: center;
 }
+
+#searchBar {
+  background-color: white;
+  width: 820px;
+  align-content: center;
+  text-align: center;
+  margin-left: 20px;
+  border-radius: 10px;
+
+}
+
+#mag{
+  width: 30px;
+  margin-left:770px;
+}
