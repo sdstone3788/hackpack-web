@@ -7,7 +7,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/ideas', function(req, res) {
-
   knex('posts').select()
   .then(function(data){
     res.send(data);
@@ -15,7 +14,8 @@ app.get('/ideas', function(req, res) {
 });
 
 app.post('/ideas', function(req, res) {
-
+  //var passed = JSON.parse(req.body);
+  console.log(passed);
   knex('posts').insert(req.body)
   .then(function(id){
     res.redirect('/');
