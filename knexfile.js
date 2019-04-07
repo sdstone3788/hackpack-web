@@ -3,7 +3,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: 'db/ideas.db'
+      filename: 'db/posts.db'
     },
     useNullAsDefault: true
   }
