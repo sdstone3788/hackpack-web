@@ -1,4 +1,8 @@
   // Initialize Firebase
+  var localStore = window.localStorage;
+var currUserName = "";
+var savedImg = new Image();
+var originalImg = new Image();
 var config = {
     apiKey: "AIzaSyAp7bxz_AoWAhgqrFiGgrRertblicYlRzo",
     authDomain: "athenahacks2019-6a7e9.firebaseapp.com",
@@ -13,6 +17,17 @@ var config = {
   var searchTags = [];
   var isSearch = false;
 
+  function localLoad(){
+    try {
+      currUserName = JSON.parse(localStore.getItem("currUserName"));
+    }catch(e){
+    }
+    try{
+      getInfo();
+    }catch(e){
+
+    }
+  }
   function highLight(data){
     data.style.backgroundColor = "#EC868B";
     console.log(data.id);
@@ -39,10 +54,14 @@ var config = {
       bodyDiv.appendChild(results);
 
         //var posts = ref.child("posts").orderByKey();
-      var query = ref.child("posts").orderByKey();
-      query.once("value").then(function(snapshot){
-        //for every post
-        snapshot.forEach(function(childSnapshot){
+        var query = firebase.database().ref("users").orderByKey();
+        query.once("value").then(function(snapshot) {
+          snapshot.forEach(function(childSnap) {
+            var childKey = childSnap.key;
+            var childData = childSnap.val();
+              var newQuery = ref.child("users").child(childKey).child("posts").orderByKey();
+                newQuery.once("value").then(function(snaps){
+                  snaps.forEach(function(childSnapshot){
           var inFilter = true;
           var allPosts = [];
           for(var i = 0; i < tags.length; i++){
@@ -59,6 +78,7 @@ var config = {
             var addDiv = document.createElement("div");
             var content = childSnapshot.child("Content").val();
             var contentP = document.createTextNode(content);
+            var writ = document.createTextNode("Written by "+childData.username);
             contentDiv.appendChild(contentP);
             var breakLine = document.createElement("br");
             mainDiv.appendChild(contentDiv);
@@ -162,9 +182,12 @@ var config = {
                  addDiv.appendChild(button);
                }
                mainDiv.appendChild(addDiv);
+               mainDiv.appendChild(writ);
                bodyDiv.appendChild(mainDiv);
           }
           });
+        });
+      });
         }).then(function(){
           document.getElementById("searchDialog").close();
           document.getElementById("LGBT").style.backgroundColor = "#0f5f74";
@@ -208,6 +231,13 @@ var config = {
       document.getElementById("createName").value = "";
       newAccount();
     }).then(function(){
+      var usersRef = ref.child("users");
+      usersRef.push({
+        "username": email,
+        "name": name
+      });
+      localStore.setItem("currUserName", JSON.stringify(email));
+      currUserName = email;
       document.getElementById("newAccDialog").close();
       window.location.href="mainPage.html";
     });
@@ -235,6 +265,8 @@ var config = {
     document.getElementById("signPassword").value = "";
     signIn();
   }).then(function(){
+    localStore.setItem("currUserName", JSON.stringify(email));
+    currUserName = email;
     document.getElementById("signInNow").close();
     window.location.href="mainPage.html";
   });
@@ -250,6 +282,7 @@ var config = {
     });
   }
     function displayPosts(){
+      localLoad();
       if(isSearch){
         console.log("isSearch is true");
         isSearch = !isSearch;
@@ -258,18 +291,23 @@ var config = {
       }
       console.log("just ran displayposts");
       var bodyDiv = document.getElementById('bodyDiv');
-
+      var writtenBy = "";
       //var posts = ref.child("posts").orderByKey();
-      var query = ref.child("posts").orderByKey();
-      query.once("value").then(function(snapshot){
-        //for every post
-           snapshot.forEach(function(childSnapshot){
+      var query = firebase.database().ref("users").orderByKey();
+      query.once("value").then(function(snapshot) {
+        snapshot.forEach(function(childSnap) {
+          var childKey = childSnap.key;
+          var childData = childSnap.val();
+            var newQuery = ref.child("users").child(childKey).child("posts").orderByKey();
+              newQuery.once("value").then(function(snaps){
+                snaps.forEach(function(childSnapshot){
                 var mainDiv = document.createElement("div");
                 mainDiv.className = "weirdDiv";
                 var contentDiv = document.createElement("div");
                 var addDiv = document.createElement("div");
                 var content = childSnapshot.child("Content").val();
                 var contentP = document.createTextNode(content);
+                var writ = document.createTextNode("Written by "+childData.username);
                 contentDiv.appendChild(contentP);
                 var breakLine = document.createElement("br");
                 mainDiv.appendChild(contentDiv);
@@ -372,10 +410,15 @@ var config = {
                      };
                      addDiv.appendChild(button);
                    }
-                   mainDiv.appendChild(addDiv);
-                  bodyDiv.appendChild(mainDiv);
+                          mainDiv.appendChild(addDiv);
+                          mainDiv.appendChild(writ);
+                          bodyDiv.appendChild(mainDiv);
+
+                });
                 });
               });
+            });
+
   }
 
 
@@ -422,25 +465,33 @@ var config = {
           ns[7] = 1;
         }
       }
-      var newQuery = ref.child("posts")
-      newQuery.push({
-        "Content": ns[0],
-        "LGBT": ns[1],
-        "Woman": ns[2],
-        "NonBinary": ns[3],
-        "Man": ns[4],
-        "Asian": ns[5],
-        "Black": ns[6],
-        "Hispanic": ns[7],
-        "POC": ns[8],
-        "White": ns[9],
-        "LowIncome": ns[10],
-        "MiddleIncome": ns[11]
-      }).then(function () {
-        window.location.href = "mainPage.html";
-      });
+      var query = firebase.database().ref("users").orderByKey();
+      query.once("value").then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childKey = childSnapshot.key;
+          var childData = childSnapshot.val();
 
-
+          if (childData.username === currUserName){
+            var newQuery = ref.child("users").child(childKey).child("posts");
+            newQuery.push({
+              "Content": ns[0],
+              "LGBT": ns[1],
+              "Woman": ns[2],
+              "NonBinary": ns[3],
+              "Man": ns[4],
+              "Asian": ns[5],
+              "Black": ns[6],
+              "Hispanic": ns[7],
+              "POC": ns[8],
+              "White": ns[9],
+              "LowIncome": ns[10],
+              "MiddleIncome": ns[11]
+            }).then(function () {
+                window.location.href = "mainPage.html";
+              });
+            }
+          });
+        });
     }
 
 function searchBar(){
@@ -449,4 +500,74 @@ function searchBar(){
 
 function cancelSearch(){
   document.getElementById("searchDialog").close();
+}
+
+function uploadImg(event){
+  savedImg= new Image();
+  savedImg.src = URL.createObjectURL(event.target.files[0]);
+  savedImg.onload = function(){placeImg(savedImg);};
+}
+
+function placeImg(img){
+  var canv = document.getElementById("pictureArea");
+  var context = canv.getContext("2d");
+  canv.width = img.width;
+  canv.height = img.height;
+  if (img.width > 500){
+    canv.width = 500;
+  }
+  if (img.height > 300){
+    canv.height = 300;
+  }
+  if (img.width < 100){
+    canv.width = 100;
+  }
+  if (img.height < 100){
+    canv.height = 100;
+  }
+  currWid = canv.width;
+  currHei = canv.height;
+  context.drawImage(img, 0, 0, currWid, currHei);
+  savedImg = canv.toDataURL();
+  var query = firebase.database().ref("users").orderByKey();
+  query.once("value").then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+
+      if (childData.username === currUserName){
+        var newQuery = ref.child("users").child(childKey).child("picture");
+        newQuery.set({
+          picture: savedImg
+        });
+      }
+    });
+  });
+//  updateAnything();
+}
+
+function getInfo(){
+    document.getElementById("yourName").innerHTML=currUserName;
+    var query = firebase.database().ref("users").orderByKey();
+    query.once("value").then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+        if (childData.username === currUserName){
+          var newQuery = ref.child("users").child(childKey).child("picture");
+          newQuery.once("value").then(function(snaps){
+            snaps.forEach(function(childSnaps){
+              var smallKey = childSnaps.key;
+              var smallData = childSnaps.val();
+              savedImg.src = smallData;
+              savedImg.onload = function(){placeImg(savedImg);};
+            });
+          });
+        }
+      });
+    });
+}
+
+function exitProfile(){
+  window.location.href="mainPage.html";
 }

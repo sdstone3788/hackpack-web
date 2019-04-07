@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Diversi-Tea</title>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body onload="localLoad()">
+    <center>
+      Your profile! Tea-riffic!<br><br>
+    <h1 id="yourName"></h1>
+      A pic of you!
+      <input type="file" accept="image/*" onchange="uploadImg(event)"><br>
+      <canvas id="pictureArea">
+      </canvas>
+      <br><br>
+      <button onclick="exitProfile()">Exit Profile</button>
+      </center>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" ></script>
+   <script type="text/javascript" src="newPostscripts.js"></script>
+    </body>
+</html>
