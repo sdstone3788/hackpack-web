@@ -62,7 +62,7 @@ div {
 
 #searchBar {
   background-color: white;
-  width: 820px;
+  width: 77%;
   align-content: center;
   text-align: center;
   margin-left: 20px;
@@ -72,5 +72,5 @@ div {
 
 #mag{
   width: 30px;
-  margin-left:770px;
+  margin-left:95%
 }

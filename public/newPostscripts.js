@@ -11,6 +11,7 @@ var config = {
   var ref = firebase.database().ref();
   var selected = [];
   var searchTags = [];
+  var isSearch = false;
 
   function highLight(data){
     data.style.backgroundColor = "#EC868B";
@@ -25,7 +26,8 @@ var config = {
   }
 
   function filterForTags(tags){
-    //window.location.href = "index.html";
+    isSearch = true;
+    window.location.href = "index.html";
       if(tags.length == 0){
         tags = searchTags;
       }
@@ -40,7 +42,127 @@ var config = {
       query.once("value").then(function(snapshot){
         //for every post
         snapshot.forEach(function(childSnapshot){
+          var inFilter = true;
+          var allPosts = [];
+          for(var i = 0; i < tags.length; i++){
+            if(!childSnapshot.child(tags[i]).val()){
+              inFilter = false;
+              break;
+            }
+          }
+          if(inFilter){
+            // add the post to the div
+            var mainDiv = document.createElement("div");
+            mainDiv.className = "weirdDiv";
+            var contentDiv = document.createElement("div");
+            var addDiv = document.createElement("div");
+            var content = childSnapshot.child("Content").val();
+            var contentP = document.createTextNode(content);
+            contentDiv.appendChild(contentP);
+            var breakLine = document.createElement("br");
+            mainDiv.appendChild(contentDiv);
+              // add the tags for this post
+              if(childSnapshot.child("LGBT").val()){
+                var button = document.createElement('button');
+                button.innerText = 'LGBT';
+                button.onclick = function() {
+                  filterForTags(['LGBT']);
+                };
+                addDiv.appendChild(button);
+              }
 
+              if(childSnapshot.child("Woman").val()){
+                var button = document.createElement('button');
+                button.innerText = 'Woman';
+                button.onclick = function() {
+                  filterForTags(['Woman']);
+                };
+                addDiv.appendChild(button);
+              }
+
+              if(childSnapshot.child("NonBinary").val()){
+                var button = document.createElement('button');
+                button.innerText = 'NonBinary';
+                button.onclick = function() {
+                  filterForTags(['NonBinary']);
+                };
+                addDiv.appendChild(button);
+              }
+
+              if(childSnapshot.child("Man").val()){
+                var button = document.createElement('button');
+                button.innerText = 'Man';
+                button.onclick = function() {
+                  filterForTags(['Man']);
+                };
+                addDiv.appendChild(button);
+              }
+
+              if(childSnapshot.child("Asian").val()){
+                var button = document.createElement('button');
+                button.innerText = 'Asian';
+                button.onclick = function() {
+                  filterForTags(['Asian']);
+                };
+                addDiv.appendChild(button);
+              }
+
+              if(childSnapshot.child("Black").val()){
+                var button = document.createElement('button');
+                button.innerText = 'Black';
+                button.onclick = function() {
+                  filterForTags(['Black']);
+                };
+                addDiv.appendChild(button);
+              }
+
+              if(childSnapshot.child("Hispanic").val()){
+                var button = document.createElement('button');
+                button.innerText = 'Hispanic';
+                button.onclick = function() {
+                  filterForTags(['Hispanic']);
+                };
+                addDiv.appendChild(button);
+              }
+
+              if(childSnapshot.child("POC").val()){
+                var button = document.createElement('button');
+                button.innerText = 'POC';
+                button.onclick = function() {
+                  filterForTags(['POC']);
+                };
+                addDiv.appendChild(button);
+              }
+
+              if(childSnapshot.child("White").val()){
+                var button = document.createElement('button');
+                button.innerText = 'White';
+                button.onclick = function() {
+                  filterForTags(['White']);
+                };
+                addDiv.appendChild(button);
+              }
+
+                if(childSnapshot.child("LowIncome").val()){
+                  var button = document.createElement('button');
+                  button.innerText = 'LowIncome';
+                  button.onclick = function() {
+                    filterForTags(['LowIncome']);
+                  };
+                  addDiv.appendChild(button);
+                }
+
+               if(childSnapshot.child("MiddleIncome").val()){
+                 var button = document.createElement('button');
+                 button.innerText = 'MiddleIncome';
+                 button.onclick = function() {
+                   filterForTags(['MiddleIncome']);
+                 };
+                 addDiv.appendChild(button);
+               }
+               mainDiv.appendChild(addDiv);
+               bodyDiv.appendChild(mainDiv);
+          }
           });
         });
   }
@@ -112,14 +234,18 @@ var config = {
       alert("an error occurred signing you out! :(");
     });
   }
-      function displayPosts(){
-        var bodyDiv = document.getElementById('bodyDiv');
+    function displayPosts(){
+      if(isSearch){
+        isSearch = !isSearch;
+        return;
+      }
+      var bodyDiv = document.getElementById('bodyDiv');
 
-        //var posts = ref.child("posts").orderByKey();
-        var query = ref.child("posts").orderByKey();
-        query.once("value").then(function(snapshot){
-          //for every post
-             snapshot.forEach(function(childSnapshot){
+      //var posts = ref.child("posts").orderByKey();
+      var query = ref.child("posts").orderByKey();
+      query.once("value").then(function(snapshot){
+        //for every post
+           snapshot.forEach(function(childSnapshot){
                 var mainDiv = document.createElement("div");
                 mainDiv.className = "weirdDiv";
                 var contentDiv = document.createElement("div");
