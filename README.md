@@ -11,6 +11,11 @@ Here's how it works:
 OR
 2. Search for stories of people with the identities you select (and explore different intersectionalities!)
 
+
+## Why is it called DiversiTea?
+'Tea' is a common word thrown around amongst the youth nowadays, and it typically means 'truth' or
+'gossip'. We want to "spill the tea" about what people face in their real, diverse lives. 
+
 ## How to Run It
 1. Click the link [here](firebaselinkhere)
 2. Create an account if you haven't already, or sign in to an existing account.
