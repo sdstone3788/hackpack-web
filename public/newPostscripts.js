@@ -27,7 +27,7 @@ var config = {
 
   function filterForTags(tags){
     isSearch = true;
-    //window.location.href = "index.html";
+    //window.location.href = "mainPage.html";
       if(tags.length == 0){
         tags = searchTags;
       }
@@ -184,7 +184,7 @@ var config = {
 
 
   function backToFeed(){
-    window.location.href="index.html";
+    window.location.href="mainPage.html";
   }
 
   function newAccount(){
@@ -209,7 +209,7 @@ var config = {
       newAccount();
     }).then(function(){
       document.getElementById("newAccDialog").close();
-      window.location.href="index.html";
+      window.location.href="mainPage.html";
     });
   }
 
@@ -223,6 +223,7 @@ var config = {
   }
 
   function signAcc(){
+    alert("HELLO");
     var email = document.getElementById("signUserName").value;
     var password = document.getElementById("signPassword").value;
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -235,15 +236,16 @@ var config = {
     document.getElementById("signPassword").value = "";
     signIn();
   }).then(function(){
+    alert("HELLOOOO????");
     document.getElementById("signInNow").close();
-    window.location.href="index.html";
+    window.location.href="mainPage.html";
   });
   }
 
   function logout(){
     firebase.auth().signOut().then(function() {
   // Sign-out successful.
-        window.location.href="homepage.html";
+        window.location.href="index.html";
     }).catch(function(error) {
   // An error happened.
       alert("an error occurred signing you out! :(");
@@ -437,7 +439,7 @@ var config = {
         "LowIncome": ns[10],
         "MiddleIncome": ns[11]
       }).then(function () {
-        window.location.href = "index.html";
+        window.location.href = "mainPage.html";
       });
 
 

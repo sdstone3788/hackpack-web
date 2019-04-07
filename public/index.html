@@ -6,42 +6,33 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
-  <body onload="displayPosts()">
+  <body>
+
     <h1>Diversi-Tea</h1>
-    <button onclick="window.location.href='index.html'">Home</button>
-    <button onclick="window.location.href='newPost.html'">Write Post</button>
-    <button onclick="logout()">Log out</button><br>
-    <br></br>
-    <button id=searchBar onclick="searchBar()"><img id= mag src="mag.jpg"> </img></button>
-    <dialog id="searchDialog">
-       Search for stories
-      <br><br>
-      <button id="LGBT" onclick="highLightSearch(this)">LGBT+</button>
-      <button id="Woman" onclick="highLightSearch(this)">Woman</button>
-      <button id="NonBinary" onclick="highLightSearch(this)">Non-Binary</button>
-      <button id="Man" onclick="highLightSearch(this)">Man</button>
 
-      <br><br>
-      <button id="POC" onclick="highLightSearch(this)">Person of Color</button>
-      <button id="White" onclick="highLightSearch(this)">White</button>
-      <button id="Asian" onclick="highLightSearch(this)">Asian</button>
-      <button id="Black" onclick="highLightSearch(this)">Black</button>
-      <button id="Hispanic" onclick="highLightSearch(this)">Hispanic</button>
-      <br><br>
 
-      <button id="LowIncome" onclick="highLightSearch(this)">Low Income</button>
-      <button id="MiddleIncome" onclick="highLightSearch(this)">Middle Income</button>
-      <br><br><br><br>
-      <button onclick="filterForTags([])">Search</button>
-      <button onclick="cancelSearch()">Cancel</button>
+    <p> I'm a cool person </p>
+
+
+    <button onclick="newAccount()">Create Account</button>
+    <button onclick="signIn()">Sign In</button>
+    <dialog id="newAccDialog">
+      <h2>Create an account! </h2><br><br>
+      Email: <input type="text" id="createUserName"><br><br>
+        Name: <input type="text" id="createName"><br><br>
+      Password: <input type="password" id="createPassword"><br><br>
+      <button type="button" onclick="newCreateAcc()">Create Account</button>
+      <button type="button" id="cancelCreateBtn" onclick="cancelCreateAcc()">Cancel</button>
     </dialog>
-    <div id='bodyDiv'>
+    <dialog id="signInNow">
+      <h2>Welcome Back! </h2> <br><br>
+      Email: <input type="text" id="signUserName"><br><br>
+      Password: <input type="password" id="signPassword"><br><br>
+      <button type="button" onclick="signAcc()">Sign In</button>
+      <button type="button" id="cancelSignBtn" onclick="cancelSignAcc()">Cancel</button>
+    </dialog>
 
-
-
-    <ul></ul>
-</div>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" ></script>
-    <script type="text/javascript" src="newPostscripts.js"></script>
+   <script type="text/javascript" src="newPostscripts.js"></script>
     </body>
 </html>
