@@ -12,7 +12,7 @@ var config = {
   var selected = [];
 
   function highLight(data){
-    data.style.backgroundColor = "orange";
+    data.style.backgroundColor = "#EC868B";
     console.log(data.id);
     selected.push(data.id);
   }
@@ -77,6 +77,70 @@ var config = {
     }).then(function () {
       window.location.href = "index.html";
     });
+  }
 
+  function backToFeed(){
+    window.location.href="index.html";
+  }
 
+  function newAccount(){
+    document.getElementById("newAccDialog").showModal();
+  }
+
+  function cancelCreateAcc(){
+    document.getElementById("newAccDialog").close();
+  }
+
+  function newCreateAcc(){
+    var email = document.getElementById("createUserName").value;
+    var password = document.getElementById("createPassword").value;
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage);
+      document.getElementById("createUserName").value = "";
+      document.getElementById("createPassword").value = "";
+      document.getElementById("createName").value = "";
+      newAccount();
+    }).then(function(){
+      document.getElementById("newAccDialog").close();
+      window.location.href="index.html";
+    });
+  }
+
+  function signIn(){
+    document.getElementById("signInNow").showModal();
+  }
+
+  function cancelSignAcc(){
+    document.getElementById("signInNow").close();
+  }
+
+  function signAcc(){
+    var email = document.getElementById("signUserName").value;
+    var password = document.getElementById("signPassword").value;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  // ...
+    alert(errorMessage);
+    document.getElementById("signUserName").value = "";
+    document.getElementById("signPassword").value = "";
+    signIn();
+  }).then(function(){
+    document.getElementById("signInNow").close();
+    window.location.href="index.html";
+  });
+  }
+
+  function logout(){
+    firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+        window.location.href="homepage.html";
+    }).catch(function(error) {
+  // An error happened.
+      alert("an error occurred signing you out! :(");
+    });
   }

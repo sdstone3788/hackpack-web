@@ -1,5 +1,9 @@
 body{
   text-align:center;
+  padding: 30px;
+  background-color: #41B3A3;
+  font-family: Verdana, sans-serif;
+  color: #fff;
 }
 button{
   background-color: grey;
@@ -7,9 +11,10 @@ button{
   border:none;
   padding:10px;
   color:#fff;
+  margin: 5px;
 }
 #submit, #cancel{
-  background-color:teal;
+  background-color: #0f5f74;
 }
 
 #yourPost {

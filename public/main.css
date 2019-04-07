@@ -1,8 +1,14 @@
 body {
   padding: 30px;
-  background-color: #84888a;
-  font-family: Arial, sans-serif;
+  background-color: #41B3A3;
+  font-family: Verdana, sans-serif;
   color: #fff;
+}
+
+dialog{
+  border-color:white;
+  background-color:#E8A87C;
+  color:white;
 }
 
 form {
