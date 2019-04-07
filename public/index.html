@@ -4,22 +4,28 @@
     <meta charset="utf-8">
     <title>Diversi-Tea</title>
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div id="introBody">
 
+
+    <div id="introParagraph">
     <h1>Diversi-Tea</h1>
-
-    <p id="introParagraph"> Welcome to DiversiTea! <br><br>
+    <p id="paragraphWords"> Welcome to DiversiTea! <br><br>
     Because we can never know what it's like to experience something
     with different identities than the ones we hold, we created a space for people to share and read
     stories from people who identify differently than we do. <br><br>
     It's also a great tool to teach people
     what intersectionality is and demonstrate how many identities can affect a given experience. </p>
-
-    <img id='boba' src='boba.png'></img>
+    <br><br>
     <button onclick="newAccount()">Create Account</button>
     <button onclick="signIn()">Sign In</button>
+  </div>
+  <div id="bobaPic">
+    <img id='boba' src='boba.png'></img>
+  </div>
+</div>
     <dialog id="newAccDialog">
       <h2>Create an account! </h2><br><br>
       Email: <input type="text" id="createUserName"><br><br>

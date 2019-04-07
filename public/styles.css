@@ -1,0 +1,41 @@
+#introBody{
+  display: flex;
+  flex-direction: row;
+}
+#bobaPic{
+  display:flex;
+
+}
+#introParagraph{
+  flex:1;
+  margin:50px;
+}
+button {
+  padding: 10px;
+  background-color: #0f5f74;
+  border: none;
+  color: #fff;
+  margin: 5px;
+}
+
+button:hover {
+  box-shadow: 3px 2px 3px #6a7988;
+}
+body {
+  padding: 30px;
+  background-color: #41B3A3;
+  font-family: Verdana, sans-serif;
+  color: #fff;
+}
+
+dialog{
+  border-color:white;
+  background-color:#E8A87C;
+  color:white;
+}
+h1{
+  font-size:60px;
+}
+#paragraphWords{
+  font-size:20px;
+}
