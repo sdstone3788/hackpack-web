@@ -1,7 +1,7 @@
 body {
   padding: 30px;
   background-color: #41B3A3;
-  font-family: Verdana, sans-serif;
+  font-family: Georgia;
   color: #fff;
 }
 
@@ -30,6 +30,7 @@ button {
   border: none;
   color: #fff;
   margin: 5px;
+  font-family: Georgia;
 }
 
 button:hover {
@@ -73,4 +74,15 @@ div {
 #mag{
   width: 30px;
   margin-left:95%
+}
+
+#introParagraph{
+  flex: 1;
+}
+
+#boba{
+  width:200px;
+  display:flex;
+  background-color: #e8a87c;
+  border-radius: 10px;
 }
